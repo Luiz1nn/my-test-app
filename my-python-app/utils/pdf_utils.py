@@ -34,7 +34,13 @@ def extract_pdf_info(pdf_path, file_name):
     for word in words:
         word_freq[word] = word_freq.get(word, 0) + 1
 
-    most_common_word = max(word_freq, key=word_freq.get)
+    if word_freq:
+        most_common_word = max(word_freq, key=word_freq.get)
+        most_common_word_freq = word_freq[most_common_word]
+    else:
+        most_common_word = ""
+        most_common_word_freq = 0
+
 
     text_content_utf8 = text.encode('utf-8')
     text_content_html = html.escape(text_content_utf8.decode('utf-8')).replace('\n', ' ')
@@ -44,7 +50,7 @@ def extract_pdf_info(pdf_path, file_name):
         "file_size": os.path.getsize(pdf_path),
         "total_words": word_count,
         "most_common_word": most_common_word,
-        "word_frequency": word_freq[most_common_word],
+        "word_frequency": most_common_word_freq,
         "text_content": text_content_html,
         "total_images": len(images),
         "image_base_64": imagesBase64,
