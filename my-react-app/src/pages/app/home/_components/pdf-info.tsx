@@ -60,7 +60,7 @@ export function PDFInfo({ pdfInfo }: Props) {
           </div>
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">Download das Imagens:</p>
-            <Button onClick={handleDownloadImages}>
+            <Button disabled={pdfInfo.images.length === 0} onClick={handleDownloadImages}>
               <FileIcon className="h-4 w-4" />
               <span className="sr-only">Download PDF</span>
             </Button>

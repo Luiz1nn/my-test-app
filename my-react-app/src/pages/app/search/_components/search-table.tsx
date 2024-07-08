@@ -72,6 +72,7 @@ export function SearchTable({ isLoading, isPending, data }: Props) {
               <TableCell>
                 <div className="flex items-center gap-2">
                   <Button
+                    disabled={item.images.length === 0}
                     onClick={handleDownloadImages}
                     variant="outline"
                     size="icon"
