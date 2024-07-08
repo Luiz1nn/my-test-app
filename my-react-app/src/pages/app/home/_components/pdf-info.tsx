@@ -4,6 +4,7 @@ import { DownloadIcon, FileIcon } from 'lucide-react'
 
 import { Button } from '~/components/ui/button'
 import { CardFooter } from '~/components/ui/card'
+import { formatBytes } from '~/helpers/format-bytes'
 import { PDF } from '~/types/pdf'
 
 type Props = {
@@ -41,7 +42,7 @@ export function PDFInfo({ pdfInfo }: Props) {
           </div>
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">Tamanho do Arquivo:</p>
-            <p>{pdfInfo.file_size}</p>
+            <p>{formatBytes(pdfInfo.file_size)}</p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">Total de Palavras:</p>
