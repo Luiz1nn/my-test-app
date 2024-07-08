@@ -69,6 +69,21 @@ def search_pdfs_service(name):
 
     upload_list = []
     for upload in uploads:
+        if not upload[9]:
+            images = []
+        else:
+            images_paths = upload[9].split(',')
+            images = []
+            for path in images_paths:
+                if path:
+                    try:
+                        with open(path, 'rb') as image_file:
+                            encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
+                            images.append(encoded_image)
+                    except FileNotFoundError:
+                        print(f"File not found: {path}")
+                        continue
+
         upload_list.append({
             "file_name": upload[2],
             "file_size": upload[3],
@@ -77,7 +92,7 @@ def search_pdfs_service(name):
             "word_frequency": upload[6],
             "text_content": upload[7],
             "total_images": upload[8],
-            "images": [base64.b64encode(open(path, 'rb').read()).decode('utf-8') for path in upload[9].split(',')]
+            "images": images
         })
 
     return {"list_pdf": upload_list}, 200
