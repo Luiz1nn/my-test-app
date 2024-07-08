@@ -15,6 +15,7 @@ import {
 import { PDF } from '~/types/pdf'
 
 import { MyPDFTableSkeleton } from './my-pdf-table-skeleton'
+import { formatBytes } from '~/helpers/format-bytes'
 
 type Props = {
   isPending: boolean
@@ -68,7 +69,7 @@ export function MyPDFTable({ isPending, data }: Props) {
                     <span>{item.file_name}</span>
                   </div>
                 </TableCell>
-                <TableCell>{item.file_size}</TableCell>
+                <TableCell>{formatBytes(item.file_size)}</TableCell>
                 <TableCell>{item.total_words}</TableCell>
                 <TableCell>{item.most_common_word}</TableCell>
                 <TableCell>{item.total_images}</TableCell>
