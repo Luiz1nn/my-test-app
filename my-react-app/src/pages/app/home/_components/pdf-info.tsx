@@ -67,7 +67,7 @@ export function PDFInfo({ pdfInfo }: Props) {
           </div>
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground">Download do Texto:</p>
-            <Button onClick={handleDownloadText}>
+            <Button disabled={pdfInfo.total_words === 0} onClick={handleDownloadText}>
               <DownloadIcon className="h-4 w-4" />
               <span className="sr-only">Download do Texto</span>
             </Button>

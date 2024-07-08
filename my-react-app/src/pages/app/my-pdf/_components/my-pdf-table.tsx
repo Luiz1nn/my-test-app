@@ -75,6 +75,7 @@ export function MyPDFTable({ isPending, data }: Props) {
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <Button
+                      disabled={item.images.length === 0}
                       onClick={handleDownloadImages}
                       variant="outline"
                       size="icon"
@@ -83,6 +84,7 @@ export function MyPDFTable({ isPending, data }: Props) {
                       <span className="sr-only">Download PDF</span>
                     </Button>
                     <Button
+                      disabled={item.total_words === 0}
                       onClick={handleDownloadText}
                       variant="outline"
                       size="icon"

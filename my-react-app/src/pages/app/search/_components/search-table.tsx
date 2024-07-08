@@ -81,6 +81,7 @@ export function SearchTable({ isLoading, isPending, data }: Props) {
                     <span className="sr-only">Download PDF</span>
                   </Button>
                   <Button
+                    disabled={item.total_words === 0}
                     onClick={handleDownloadText}
                     variant="outline"
                     size="icon"
